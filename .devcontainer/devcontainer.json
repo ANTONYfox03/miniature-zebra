@@ -1,0 +1,29 @@
+{
+  "name": "Alloy",
+  "build": { 
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.profiles.linux": { 
+          "zsh": { 
+            "path": "/bin/zsh" 
+          } 
+        }
+      },
+      "extensions": [
+        "ms-azuretools.vscode-docker",
+        "dbaeumer.vscode-eslint",
+        "davidanson.vscode-markdownlint"
+      ]
+    }
+  },
+  "containerEnv": {
+    "GITHUB_ORG": "${localEnv:GIT_HUB_PKG_ORG}",
+    "GITHUB_TOKEN": "${localEnv:GIT_HUB_PKG_TOKEN}"
+  },
+	"postCreateCommand": "printf \"\\033[1;32mYou should run 'npm ci' in a new terminal after this one closes to install dependencies\\033[0m\\n\"",
+  "remoteUser": "alloy"
+}
